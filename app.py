@@ -12,7 +12,68 @@ st.set_page_config(
 model = load_model()
 vocab = load_vocab()
 
-st.title("🔍 Deteksi Anomali HDFS")
+st.markdown("""
+<style>
+
+.stApp{
+    background: linear-gradient(
+        160deg,
+        #DBEAFE 0%,
+        #EFF6FF 45%,
+        #FFFFFF 100%
+    );
+}
+
+.main .block-container{
+    max-width:900px;
+    padding-top:2rem;
+}
+
+h1{
+    color:#1565C0;
+    text-align:center;
+}
+
+.stButton > button{
+    width:100%;
+    background:#1565C0;
+    color:white;
+    border:none;
+    border-radius:12px;
+    padding:0.7rem;
+    font-weight:bold;
+}
+
+.stButton > button:hover{
+    background:#0D47A1;
+}
+
+[data-testid="stFileUploader"]{
+    background:white;
+    border-radius:12px;
+    padding:10px;
+    border:1px solid #BFDBFE;
+}
+
+.metric-card{
+    background:white;
+    padding:15px;
+    border-radius:12px;
+    border:1px solid #DBEAFE;
+    text-align:center;
+    box-shadow:0 2px 8px rgba(0,0,0,0.05);
+}
+
+</style>
+""", unsafe_allow_html=True)
+st.markdown("""
+<div style="text-align:center;">
+    <h1>🔍 Deteksi Anomali HDFS</h1>
+    <p style="color:#60A5FA;">
+        Sistem deteksi anomali log HDFS berbasis Bidirectional LSTM
+    </p>
+</div>
+""", unsafe_allow_html=True)
 
 threshold = st.slider(
     "Threshold",
