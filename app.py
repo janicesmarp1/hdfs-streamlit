@@ -26,6 +26,11 @@ trace_file = st.file_uploader(
     type=["csv"]
 )
 
+label_file = st.file_uploader(
+    "Upload Anomaly Label CSV (Opsional)",
+    type=["csv"]
+)
+
 if st.button("Deteksi") and trace_file:
 
     result_df = run_prediction(
