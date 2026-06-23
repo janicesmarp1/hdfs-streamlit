@@ -66,18 +66,12 @@ h1{
 
 </style>
 """, unsafe_allow_html=True)
-
 st.markdown("""
-<div class="hero">
-    <div style="font-size:48px;">🔍</div>
-
-    <div class="hero-title">
-        HDFS Anomaly Detection
-    </div>
-
-    <div class="hero-sub">
-        Bidirectional LSTM-Based Log Anomaly Detection System
-    </div>
+<div style="text-align:center;">
+    <h1>🔍 Deteksi Anomali HDFS</h1>
+    <p style="color:#60A5FA;">
+        Sistem deteksi anomali log HDFS berbasis Bidirectional LSTM
+    </p>
 </div>
 """, unsafe_allow_html=True)
 
