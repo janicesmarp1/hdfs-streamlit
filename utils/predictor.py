@@ -4,6 +4,7 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 
 from utils.preprocess import parse_seq
 
+
 def run_prediction(
     csv_file,
     model,
@@ -18,18 +19,26 @@ def run_prediction(
         for c in df.columns
     ]
 
+    if "blockid" not in df.columns:
+        raise ValueError(
+            "Kolom blockid tidak ditemukan"
+        )
+
+    if "features" not in df.columns:
+        raise ValueError(
+            "Kolom features tidak ditemukan"
+        )
+
     df["event_list"] = (
         df["features"]
         .apply(parse_seq)
     )
 
     encoded = [
-
         [
             vocab.get(e, 0)
             for e in seq
         ]
-
         for seq in df["event_list"]
     ]
 
@@ -51,17 +60,14 @@ def run_prediction(
 
     df["anomaly_score"] = probs
 
-    df["status"] = preds
+    df["prediksi"] = preds
 
-    df["status"] = df["status"].map({
-        0: "Normal",
-        1: "🚨 Anomali"
-    })
+    df["status"] = (
+        df["prediksi"]
+        .map({
+            0: "Normal",
+            1: "🚨 Anomali"
+        })
+    )
 
-    return df[
-        [
-            "blockid",
-            "anomaly_score",
-            "status"
-        ]
-    ]
+    return df
